@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>MemeStock Project</title> 
+    <style>
+      .h1{
+        font-family: "Times New Roman", Times, serif;
+      }
+      .h2{
+        font-family: "Times New Roman", Times, serif;
+      }
+      .h3{
+        font-family: "Times New Roman", Times, serif;
+      }
+
+    </style>
+</head>
+
+<body>
+  <div class="p-3 mb-2 bg-dark text-white">
+    <div class="container">
+      <div class="col-md-12 jumbotron text-center">
+        <h1 class="h1">Meme Stock Price Predictions</h1>
+        <h2 class="h2">Supervised ML Model</h2>
+        <h3 class="h3">By: Guadalupe Salinas, JT Carter, Stone Leicar & Ricardo Saldana</h3>
+          <!--<p>In this project we will try to answer the question, can we predict if a meme stock will go up or down based on the social media hype. Specifically, we will be analyzing Twitter data to measure how often Tesla stock is mentioned. </p>-->
+      </div>
+      <div class="container">
+        <div class="col-md-12">
+        <img id="cowpicture"
+         src="images/combo.png" class="w3-round" alt="Norway" style="width:40%">
+        </div>
+      </div>
+      <div class="container">
+        <div class="col-md-12 jumbotron text-left">
+          <h2>Overview</h2>
+          <p>Meme stocks have been gaining popularity in the last two years and have generated investors both profits and losses. The rise of social media fandom and its accompanying chatter has been named the culprit of major catapults in stocks such as GME, TSLA, AMC, and many others.</p>
+          <h2>Our Project</h2>
+          <p>In this project we tested whether we could predict if the price of a meme stock would increase or decrease based on the social media hype around it (conversations invoving their mention online). Specifically, we analyzed Twitter data to measure how often Tesla stock was mentioned in a 7 day period, and merged this data with the stock price counterpart on an hourly basis. As a baseline we tried to create the same results using a Stock index, the S&P500 index, in lieu of the Twitter data.</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="col-md-12 jumbotron text-left">
+          <h2>Our Initial Analysis</h2>
+          <h3>Logistical Regression</h3>
+          <p>When comparing #TSLA tweet counts against the Percent Change of Tesla Stock, our logistical regression model yielded the following results:</p>
+          <img  id="logreg" src="images/logreg.png" style="width:70%" align="left">
+            <ul class="col-md-6">
+              <li>Features : SP500 % change, Tweet Count, Volume of SP500 and TSLA</li>
+              <li>In our precision, recall, and f1-score, we were unable to determine with much certainty whether the stock would increase or decrease.</li>
+              <li>We suspected there may be other factors affecting the prices of the stock at a greater responsibility than those that we were testing (tweet count and S&P500 % change)</li>
+            </ul>
+        
+          <p class="col-md-12">Digging Deeper into Logistical Regression</p>
+          <img id="sigmoid" src="images/sigmoid.png" style="width:70%" align="left">
+            <ul class="col-md-6">
+              <li>Our model did not return a good sigmoid function correlation</li>
+              <li>There was no significant change in the decrease or increase of tesla stock at lower vs higher tweet counts.</li>
+            </ul>
+          <p class="col-md-12">We decided to perform additional Analyses</p>
+          <p class="col-md-12">Assessing the impact of TSLA's volume on Percent Day Change</p>
+          <img id="vol" src="images/vol.png" style="width:70%" align="left">
+        </div>
+      </div>
+      <div class="container">
+        <div class="col-md-12 jumbotron text-left"> 
+          <h2>Further Analysis</h2>
+          <h3>Linear Regression Models:</h3>
+            <button id="btn1">Tweet Count vs. Tesla Stock Percent day Change</button>
+            <button id="btn2">Tesla Stock Percent day Change vs. SPY Percent day Change</button>
+            <button id="btn3">Combined</button>
+            <img class="graphs" src="images/lin_reg_tsla_tweet copy.png" alt="">
+          <script src="script.js"></script>
+          <p>The following graphs represent our linear regression models for each of the connections in the buttons above</p>
+          <p>From these visualizations, and subsequent analysis, we saw that there was a small correlation between Tesla's percent change and tweet counts with an R-squared score of 0.0058</p>
+          <p>The highest R-squared score came from the correlation between the Percent day change of the SPY index vs the Percent day change of Tesla, indicating higher impact.</p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="col-md-12 jumbotron text-left"> 
+          <h2>Conclusion</h2>
+          <p>We can conclude that the strongest correlation we found by looking at the r squared and coeffiecients is the S&P 500 having increase of price of itself and Tesla.</p>
+          <p>The limitations we initially encountered with the limited amount of both stock data and twitter data (being limited to only the past 7 days of data due to API limitations) created a big problem for our overall model and analysis.</p>
+          <p>Still, we strived to examine the correlations and create a ML model with what we had as we did not foresee ourselves coming up with a new project idea midway through our project.</p>
+          <h3>Future Analysis</h3>
+          <p>We would like to continue to gather data from the Twitter API and from the YFinance API in order to create a better model and have more data to go off of.</p>
+          <p></p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
